@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 export async function POST(req: NextApiRequest) {
   if (req.method === "POST") {
     try {
-      const formData = await req.body;
+      const formData = req.body;
 
-      console.log("Form submitted:", formData);
+      console.log("Form submitted:",formData);
 
       return NextResponse.json(
         { message: "Form submitted successfully" },
-        { status: 200 }
+        { status: 200 },
       );
     } catch (error) {
       console.error("Error submitting form:", error);

@@ -2,8 +2,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-
+import { handleSubmitForm } from "@/action/handleSubmitForm";
 interface FormValues {
   name: string;
   email: string;
@@ -32,10 +31,7 @@ const BasicForm: React.FC = () => {
     { resetForm }: FormikHelpers<FormValues>
   ) => {
     try {
-      console.log(values);
-      const response = await axios.post("/api/submit", values);
-
-      console.log("Form submitted successfully", response.data);
+      handleSubmitForm(values.name, values.email, values.contact);
 
       resetForm();
     } catch (error) {
